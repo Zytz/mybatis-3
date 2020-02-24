@@ -1,0 +1,9 @@
+<configuration>
+  <mappers>
+
+    <!--以下二选一-->
+    <mapper class="IUserMapper" ></mapper>
+    <package name = "IUserMapper"></package>
+  </mappers>
+
+</configuration>

@@ -100,8 +100,10 @@ public class XMLConfigBuilder extends BaseBuilder {
     return configuration;
   }
 
+  //解析xml文件的实现类
   private void parseConfiguration(XNode root) {
     try {
+      //注意解析的顺序，也是书写xml文件的顺序
       //issue #117 read properties first
       propertiesElement(root.evalNode("properties"));
       Properties settings = settingsAsProperties(root.evalNode("settings"));
@@ -361,7 +363,9 @@ public class XMLConfigBuilder extends BaseBuilder {
   private void mapperElement(XNode parent) throws Exception {
     if (parent != null) {
       for (XNode child : parent.getChildren()) {
+        //扫描包的两种方式
         if ("package".equals(child.getName())) {
+          //获取
           String mapperPackage = child.getStringAttribute("name");
           configuration.addMappers(mapperPackage);
         } else {
